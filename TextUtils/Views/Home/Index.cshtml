@@ -1,0 +1,51 @@
+﻿@model TextUtils.Models.TextModel
+@{
+    ViewData["Title"] = "Text Utils Home";
+    
+}
+
+<!-- Bootstrap Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Text Utils</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#features">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-4">
+    <h2 class="text-center">Welcome to Text Utils</h2>
+    <p class="text-center">Enhance and beautify your text effortlessly.</p>
+
+    <!-- Input Form -->
+    <form asp-action="ProcessText" method="post" class="mt-4">
+        <div class="input-group mb-3">
+            <input type="text" asp-for="InputText" class="form-control" placeholder="Enter your text here..." aria-label="Text to be processed">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" name="action" value="correct">Correct Text</button>
+                <button class="btn btn-danger" type="submit" name="action" value="stop">Stop</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Display Corrected Text -->
+    @if (Model?.OutputText != null)
+    {
+        <hr />
+        <h3>Corrected Text</h3>
+        <textarea class="form-control" rows="6" readonly>@Model.OutputText</textarea>
+    }
+</div>

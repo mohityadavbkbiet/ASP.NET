@@ -1,0 +1,24 @@
+@model TextUtils.Models.TextModel
+@{
+    ViewData["Title"] = "Text Utils";
+}
+
+<div class="container">
+    <h2 class="text-center">Text Utils</h2>
+    
+    <form asp-action="ProcessText" method="post">
+        <div class="form-group">
+            <label for="InputText">Enter Text</label>
+            <textarea asp-for="InputText" class="form-control" rows="6" placeholder="Enter your text here..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Process Text</button>
+    </form>
+
+    @if (Model.OutputText != null)
+    {
+        <hr />
+        <h3>Processed Text</h3>
+        <textarea class="form-control" rows="6" readonly>@Model.OutputText</textarea>
+    }
+</div>

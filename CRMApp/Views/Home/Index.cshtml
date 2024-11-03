@@ -1,0 +1,29 @@
+@model IEnumerable<CRMApp.Models.Customer>
+
+@{
+    ViewData["Title"] = "Customer List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a href="/Home/Create">Add New Customer</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+                <td>@customer.Phone</td>
+            </tr>
+        }
+    </tbody>
+</table>
